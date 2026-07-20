@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bike Form — RideShare Admin</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-content">
+            <h1 class="logo">🚲 RideShare Admin</h1>
+            <nav>
+                <a href="/">View Site</a>
+                <a href="/admin">Bikes</a>
+                <a href="/admin/rentals">Rentals</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="form-section">
+        <div class="form-card">
+            <h2 th:text="${bike.id != null} ? 'Edit Bike' : 'Add New Bike'">Bike Form</h2>
+
+            <form th:action="@{/admin/bikes/save}" th:object="${bike}" method="post">
+                <input type="hidden" th:field="*{id}">
+
+                <label for="name">Name</label>
+                <input type="text" id="name" th:field="*{name}" required placeholder="e.g. Mountain Explorer">
+
+                <label for="model">Model</label>
+                <input type="text" id="model" th:field="*{model}" required placeholder="e.g. Trek X-Caliber 8">
+
+                <label for="category">Category</label>
+                <select id="category" th:field="*{category}" required
+                        style="width:100%; padding:12px; background-color:#1f1f1f; border:1px solid #333333; border-radius:6px; font-size:15px; color:#f1f1f1;">
+                    <option th:each="cat : ${categories}" th:value="${cat}" th:text="${cat}"></option>
+                </select>
+
+                <label for="hourlyRate">Hourly Rate (₹)</label>
+                <input type="number" step="0.01" id="hourlyRate" th:field="*{hourlyRate}" required placeholder="e.g. 5.50">
+
+                <label for="imageUrl">Image URL</label>
+                <input type="text" id="imageUrl" th:field="*{imageUrl}" placeholder="https://...">
+
+                <label for="available" style="display:flex; align-items:center; gap:8px; margin-top:20px;">
+                    <input type="checkbox" id="available" th:field="*{available}" style="width:auto;">
+                    Available for rent
+                </label>
+
+                <button type="submit" class="rent-btn" style="margin-top:24px;">Save Bike</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 RideShare. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -53,4 +53,36 @@ public class WebController {
         model.addAttribute("rental", rental);
         return "rent-confirmation";
     }
+    
+ // Show return lookup form
+    @GetMapping("/return")
+    public String returnLookupForm() {
+        return "return-lookup";
+    }
+
+    // Process lookup - show active rental for that phone number
+    @PostMapping("/return/search")
+    public String searchActiveRental(@RequestParam String phone, Model model) {
+        List<Rental> rentals = rentalService.getRentalHistory(phone);
+        Rental activeRental = rentals.stream()
+                .filter(r -> r.getStatus() == com.rental.bikesystem.entity.RentalStatus.ACTIVE)
+                .findFirst()
+                .orElse(null);
+
+        if (activeRental == null) {
+            model.addAttribute("notFound", true);
+            return "return-lookup";
+        }
+
+        model.addAttribute("rental", activeRental);
+        return "return-confirm";
+    }
+
+    // Complete the return
+    @PostMapping("/return/complete")
+    public String completeReturn(@RequestParam Long bikeId, Model model) {
+        Rental rental = rentalService.returnBike(bikeId);
+        model.addAttribute("rental", rental);
+        return "return-success";
+    }
 }

@@ -11,18 +11,40 @@
         <div class="navbar-content">
             <h1 class="logo">🚲 RideShare</h1>
             <nav>
-                <a href="/">Home</a>
-                <a href="#bikes">Browse Bikes</a>
-            </nav>
+    			<a href="/">Home</a>
+  		  		<a href="#bikes">Browse Bikes</a>
+    			<a href="#how-it-works">How It Works</a>
+    			<a href="/return">Return a Bike</a>
+			</nav>
         </div>
     </header>
 
     <section class="hero">
-        <h2>Find Your Ride</h2>
-        <p>Affordable, convenient bike rentals — book in seconds.</p>
+        <h2>Bicycle <span class="accent">Rentals</span></h2>
+        <p>Affordable, convenient bike rentals — book in seconds, ride in minutes.</p>
     </section>
 
-    <section class="bike-grid" id="bikes">
+    <section class="category-strip">
+        <div class="category-item">
+            <div class="icon">🚲</div>
+            <span>Bikes</span>
+        </div>
+        <div class="category-item">
+            <div class="icon">🛵</div>
+            <span>Mopeds</span>
+        </div>
+        <div class="category-item">
+            <div class="icon">🛴</div>
+            <span>Scooters</span>
+        </div>
+        <div class="category-item">
+            <div class="icon">🚗</div>
+            <span>Cars</span>
+        </div>
+    </section>
+
+    <h2 class="section-title" id="bikes">Available Bikes</h2>
+    <section class="bike-grid">
         <div class="bike-card" th:each="bike : ${bikes}">
             <img th:src="${bike.imageUrl}" alt="Bike image" class="bike-image">
             <div class="bike-info">
@@ -37,14 +59,51 @@
                    Status
                 </p>
                 <a th:if="${bike.available}" th:href="@{/rent/{id}(id=${bike.id})}" class="rent-btn">Rent Now</a>
-				<button th:if="${!bike.available}" class="rent-btn" disabled>Not Available</button>
+                <button th:if="${!bike.available}" class="rent-btn" disabled>Not Available</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <h2 class="section-title" style="margin-bottom: 24px;">How to Rent a Bike</h2>
+
+        <div class="step-row">
+            <div class="step-number">1</div>
+            <div>
+                <h4>Browse</h4>
+                <p>Explore our fleet and pick a bike that suits your ride.</p>
+            </div>
+        </div>
+
+        <div class="step-row">
+            <div class="step-number">2</div>
+            <div>
+                <h4>Book</h4>
+                <p>Enter your name and phone number to reserve it instantly.</p>
+            </div>
+        </div>
+
+        <div class="step-row">
+            <div class="step-number">3</div>
+            <div>
+                <h4>Ride</h4>
+                <p>Pick up your bike and enjoy the road — billed by the hour.</p>
+            </div>
+        </div>
+
+        <div class="step-row">
+            <div class="step-number">4</div>
+            <div>
+                <h4>Return</h4>
+                <p>Drop it back when you're done. Total cost calculated automatically.</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 RideShare. All rights reserved.</p>
-    </footer>
+    <p>&copy; 2026 RideShare. All rights reserved.</p>
+    <p style="margin-top:8px;"><a href="/admin" style="color:#6b6b6b; font-size:12px;">Admin</a></p>
+</footer>
 
 </body>
 </html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Return — RideShare</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-content">
+            <h1 class="logo">🚲 RideShare</h1>
+            <nav>
+                <a href="/">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="form-section">
+        <div class="form-card">
+            <h2>Confirm Return</h2>
+
+            <div class="summary-box">
+                <img th:src="${rental.bike.imageUrl}" alt="Bike" class="summary-image">
+                <div>
+                    <h3 th:text="${rental.bike.name}">Bike Name</h3>
+                    <p th:text="${rental.bike.model}">Model</p>
+                    <p class="summary-rate">
+                        <span th:text="${'₹' + rental.bike.hourlyRate}">₹0.00</span> / hour
+                    </p>
+                </div>
+            </div>
+
+            <div class="confirmation-details">
+                <div class="detail-row">
+                    <span>Renter</span>
+                    <strong th:text="${rental.renterName}">Name</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Started</span>
+                    <strong th:text="${#temporals.format(rental.startTime, 'dd MMM yyyy, hh:mm a')}">Time</strong>
+                </div>
+            </div>
+
+            <form th:action="@{/return/complete}" method="post">
+                <input type="hidden" name="bikeId" th:value="${rental.bike.id}">
+                <button type="submit" class="rent-btn">Confirm Return</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 RideShare. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

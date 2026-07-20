@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Return Complete — RideShare</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-content">
+            <h1 class="logo">🚲 RideShare</h1>
+            <nav>
+                <a href="/">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="form-section">
+        <div class="form-card confirmation-card">
+            <div class="checkmark">✓</div>
+            <h2>Bike Returned!</h2>
+            <p class="confirmation-sub">Thanks for riding with us.</p>
+
+            <div class="confirmation-details">
+                <div class="detail-row">
+                    <span>Bike</span>
+                    <strong th:text="${rental.bike.name}">Bike Name</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Duration</span>
+                    <strong th:text="${#temporals.format(rental.startTime, 'hh:mm a')} + ' – ' + ${#temporals.format(rental.endTime, 'hh:mm a')}">Duration</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Total Cost</span>
+                    <strong th:text="${'₹' + rental.totalCost}">₹0.00</strong>
+                </div>
+            </div>
+
+            <a href="/" class="rent-btn back-home-btn">Back to Home</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 RideShare. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

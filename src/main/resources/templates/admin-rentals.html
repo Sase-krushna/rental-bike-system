@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Rentals — RideShare Admin</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-content">
+            <h1 class="logo">🚲 RideShare Admin</h1>
+            <nav>
+                <a href="/">View Site</a>
+                <a href="/admin">Bikes</a>
+                <a href="/admin/rentals">Rentals</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="admin-section">
+        <h2 class="section-title" style="text-align:left; padding:0 0 20px;">All Rentals</h2>
+
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Bike</th>
+                    <th>Renter</th>
+                    <th>Phone</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Status</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="rental : ${rentals}">
+                    <td th:text="${rental.bike.name}">Bike</td>
+                    <td th:text="${rental.renterName}">Name</td>
+                    <td th:text="${rental.renterPhone}">Phone</td>
+                    <td th:text="${#temporals.format(rental.startTime, 'dd MMM, hh:mm a')}">Start</td>
+                    <td th:text="${rental.endTime != null} ? ${#temporals.format(rental.endTime, 'dd MMM, hh:mm a')} : '—'">End</td>
+                    <td>
+                        <span class="bike-status"
+                              th:classappend="${rental.status.name() == 'ACTIVE'} ? 'status-unavailable' : 'status-available'"
+                              th:text="${rental.status}">Status</span>
+                    </td>
+                    <td th:text="${rental.totalCost != null} ? ${'₹' + rental.totalCost} : '—'">Cost</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 RideShare. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

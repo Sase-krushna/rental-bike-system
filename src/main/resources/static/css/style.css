@@ -6,15 +6,25 @@
 
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #f4f6f8;
-    color: #1a1a1a;
+    background-color: #0f0f0f;
+    color: #f1f1f1;
     line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* Navbar */
 .navbar {
-    background-color: #1e293b;
-    padding: 16px 0;
+    background-color: #0f0f0f;
+    padding: 20px 0;
+    border-bottom: 1px solid #262626;
 }
 
 .navbar-content {
@@ -33,164 +43,252 @@ body {
 }
 
 .navbar nav a {
-    color: #cbd5e1;
-    text-decoration: none;
-    margin-left: 24px;
+    color: #cfcfcf;
+    margin-left: 28px;
     font-size: 15px;
     transition: color 0.2s;
 }
 
 .navbar nav a:hover {
-    color: #ffffff;
+    color: #ff8a3d;
 }
 
 /* Hero */
 .hero {
-    text-align: center;
-    padding: 64px 24px;
-    background: linear-gradient(135deg, #2563eb, #1e40af);
-    color: #ffffff;
+    text-align: left;
+    padding: 90px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .hero h2 {
-    font-size: 36px;
-    margin-bottom: 12px;
+    font-size: 56px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: #ffffff;
 }
 
 .hero p {
-    font-size: 16px;
-    color: #dbeafe;
+    font-size: 17px;
+    color: #b0b0b0;
+    max-width: 480px;
+}
+
+.hero .accent {
+    color: #ff8a3d;
+}
+
+/* Category strip */
+.category-strip {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #262626;
+}
+
+.category-item {
+    text-align: center;
+    color: #e5e5e5;
+}
+
+.category-item .icon {
+    font-size: 32px;
+    color: #ff8a3d;
+    margin-bottom: 10px;
+}
+
+.category-item span {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 /* Bike grid */
 .bike-grid {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 48px 24px;
+    padding: 60px 24px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+}
+
+.section-title {
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    font-size: 32px;
+    color: #ffffff;
 }
 
 .bike-card {
-    background-color: #ffffff;
-    border-radius: 12px;
+    background-color: #181818;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #262626;
+    transition: transform 0.2s, border-color 0.2s;
 }
 
 .bike-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border-color: #ff8a3d;
 }
 
 .bike-image {
     width: 100%;
-    height: 180px;
+    height: 190px;
     object-fit: cover;
 }
 
 .bike-info {
-    padding: 18px;
+    padding: 20px;
 }
 
 .bike-info h3 {
-    font-size: 18px;
+    font-size: 19px;
+    color: #ffffff;
     margin-bottom: 4px;
 }
 
 .bike-model {
-    color: #64748b;
+    color: #9a9a9a;
     font-size: 14px;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
 }
 
 .bike-rate {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
-    color: #1e293b;
-    margin-bottom: 8px;
+    color: #f1f1f1;
+    margin-bottom: 10px;
 }
 
 .bike-rate span {
-    color: #2563eb;
+    color: #ff8a3d;
 }
 
 .bike-status {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     padding: 4px 10px;
     border-radius: 20px;
     display: inline-block;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
 }
 
 .status-available {
-    background-color: #dcfce7;
-    color: #166534;
+    background-color: #163b26;
+    color: #4ade80;
 }
 
 .status-unavailable {
-    background-color: #fee2e2;
-    color: #991b1b;
+    background-color: #3b1616;
+    color: #f87171;
 }
 
 .rent-btn {
+    display: inline-block;
     width: 100%;
-    padding: 10px;
-    background-color: #2563eb;
-    color: #ffffff;
+    padding: 11px;
+    background-color: #ff8a3d;
+    color: #0f0f0f;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
+    text-align: center;
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
 .rent-btn:hover:not(:disabled) {
-    background-color: #1d4ed8;
+    background-color: #ffa15f;
 }
 
 .rent-btn:disabled {
-    background-color: #cbd5e1;
+    background-color: #333333;
+    color: #777777;
     cursor: not-allowed;
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 24px;
-    color: #64748b;
+/* How it works */
+.how-it-works {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 24px;
+}
+
+.step-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid #262626;
+}
+
+.step-row:last-child {
+    border-bottom: none;
+}
+
+.step-number {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background-color: #1f1f1f;
+    border: 1px solid #ff8a3d;
+    color: #ff8a3d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
     font-size: 14px;
 }
+
+.step-row h4 {
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.step-row p {
+    color: #9a9a9a;
+    font-size: 14px;
+}
+
 /* Booking form */
 .form-section {
     max-width: 600px;
-    margin: 48px auto;
+    margin: 60px auto;
     padding: 0 24px;
 }
 
 .form-card {
-    background-color: #ffffff;
-    border-radius: 12px;
+    background-color: #181818;
+    border: 1px solid #262626;
+    border-radius: 10px;
     padding: 32px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .form-card h2 {
     margin-bottom: 24px;
     font-size: 24px;
+    color: #ffffff;
 }
 
 .summary-box {
     display: flex;
     gap: 16px;
     align-items: center;
-    background-color: #f8fafc;
+    background-color: #1f1f1f;
     padding: 16px;
-    border-radius: 10px;
+    border-radius: 8px;
     margin-bottom: 24px;
 }
 
@@ -198,39 +296,57 @@ footer {
     width: 90px;
     height: 90px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 6px;
+}
+
+.summary-box h3 {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.summary-box p {
+    color: #9a9a9a;
+    font-size: 14px;
 }
 
 .summary-rate {
     font-weight: 700;
-    color: #2563eb;
+    color: #ff8a3d;
     margin-top: 4px;
 }
 
 form label {
     display: block;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     margin-bottom: 6px;
-    margin-top: 16px;
-    color: #334155;
+    margin-top: 18px;
+    color: #cfcfcf;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
 }
 
 form input {
     width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    padding: 12px;
+    background-color: #1f1f1f;
+    border: 1px solid #333333;
+    border-radius: 6px;
     font-size: 15px;
+    color: #f1f1f1;
+}
+
+form input::placeholder {
+    color: #6b6b6b;
 }
 
 form input:focus {
     outline: none;
-    border-color: #2563eb;
+    border-color: #ff8a3d;
 }
 
 form .rent-btn {
-    margin-top: 24px;
+    margin-top: 26px;
 }
 
 /* Confirmation page */
@@ -241,8 +357,8 @@ form .rent-btn {
 .checkmark {
     width: 56px;
     height: 56px;
-    background-color: #22c55e;
-    color: #ffffff;
+    background-color: #4ade80;
+    color: #0f0f0f;
     font-size: 28px;
     border-radius: 50%;
     display: flex;
@@ -252,14 +368,14 @@ form .rent-btn {
 }
 
 .confirmation-sub {
-    color: #64748b;
+    color: #9a9a9a;
     margin-bottom: 24px;
 }
 
 .confirmation-details {
     text-align: left;
-    background-color: #f8fafc;
-    border-radius: 10px;
+    background-color: #1f1f1f;
+    border-radius: 8px;
     padding: 16px;
     margin-bottom: 24px;
 }
@@ -267,8 +383,8 @@ form .rent-btn {
 .detail-row {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid #e2e8f0;
+    padding: 10px 0;
+    border-bottom: 1px solid #2c2c2c;
     font-size: 14px;
 }
 
@@ -277,11 +393,91 @@ form .rent-btn {
 }
 
 .detail-row span {
-    color: #64748b;
+    color: #9a9a9a;
+}
+
+.detail-row strong {
+    color: #f1f1f1;
 }
 
 .back-home-btn {
-    display: inline-block;
-    text-decoration: none;
+    margin-top: 8px;
+}
+
+/* Footer */
+footer {
     text-align: center;
+    padding: 28px;
+    color: #6b6b6b;
+    font-size: 14px;
+    border-top: 1px solid #262626;
+}
+/* Admin */
+.admin-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 24px;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #181818;
+    border: 1px solid #262626;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.admin-table th {
+    text-align: left;
+    padding: 14px 16px;
+    background-color: #1f1f1f;
+    color: #9a9a9a;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.admin-table td {
+    padding: 14px 16px;
+    border-top: 1px solid #262626;
+    font-size: 14px;
+    color: #f1f1f1;
+}
+
+.admin-thumb {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.admin-link {
+    color: #ff8a3d;
+    font-size: 13px;
+    font-weight: 600;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.delete-link {
+    color: #f87171;
+}
+
+.admin-link:hover {
+    text-decoration: underline;
 }

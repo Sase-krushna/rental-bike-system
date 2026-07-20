@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard — RideShare</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-content">
+            <h1 class="logo">🚲 RideShare Admin</h1>
+            <nav>
+                <a href="/">View Site</a>
+                <a href="/admin">Bikes</a>
+                <a href="/admin/rentals">Rentals</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="admin-section">
+        <div class="admin-header">
+            <h2 class="section-title" style="text-align:left; padding:0;">Manage Bikes</h2>
+            <a href="/admin/bikes/new" class="rent-btn" style="width:auto; padding:11px 24px;">+ Add New Bike</a>
+        </div>
+
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Model</th>
+                    <th>Category</th>
+                    <th>Rate/hr</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="bike : ${bikes}">
+                    <td><img th:src="${bike.imageUrl}" class="admin-thumb"></td>
+                    <td th:text="${bike.name}">Name</td>
+                    <td th:text="${bike.model}">Model</td>
+                    <td th:text="${bike.category}">Category</td>
+                    <td th:text="${'₹' + bike.hourlyRate}">₹0.00</td>
+                    <td>
+                        <span class="bike-status"
+                              th:classappend="${bike.available} ? 'status-available' : 'status-unavailable'"
+                              th:text="${bike.available} ? 'Available' : 'Rented'">Status</span>
+                    </td>
+                    <td class="admin-actions">
+                        <a th:href="@{/admin/bikes/{id}/edit(id=${bike.id})}" class="admin-link">Edit</a>
+                        <form th:action="@{/admin/bikes/{id}/delete(id=${bike.id})}" method="post" style="display:inline;">
+                            <button type="submit" class="admin-link delete-link" onclick="return confirm('Delete this bike?');">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 RideShare. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

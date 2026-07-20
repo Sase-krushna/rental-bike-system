@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Return a Bike — RideShare</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-content">
+            <h1 class="logo">🚲 RideShare</h1>
+            <nav>
+                <a href="/">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="form-section">
+        <div class="form-card">
+            <h2>Return Your Bike</h2>
+            <p style="color:#9a9a9a; font-size:14px; margin-bottom: 10px;">
+                Enter the phone number you used when booking to find your active rental.
+            </p>
+
+            <div th:if="${notFound}" style="background:#3b1616; color:#f87171; padding:12px; border-radius:6px; margin-bottom:16px; font-size:14px;">
+                No active rental found for that phone number.
+            </div>
+
+            <form th:action="@{/return/search}" method="post">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+
+                <button type="submit" class="rent-btn">Find My Rental</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 RideShare. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
