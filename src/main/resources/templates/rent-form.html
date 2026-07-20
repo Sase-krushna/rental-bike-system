@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Your Ride — RideShare</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-content">
+            <h1 class="logo">🚲 RideShare</h1>
+            <nav>
+                <a href="/">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="form-section">
+        <div class="form-card">
+            <h2>Book Your Ride</h2>
+
+            <div class="summary-box">
+                <img th:src="${bike.imageUrl}" alt="Bike" class="summary-image">
+                <div>
+                    <h3 th:text="${bike.name}">Bike Name</h3>
+                    <p th:text="${bike.model}">Model</p>
+                    <p class="summary-rate">
+                        <span th:text="${'₹' + bike.hourlyRate}">₹0.00</span> / hour
+                    </p>
+                </div>
+            </div>
+
+            <form th:action="@{/rent}" method="post">
+                <input type="hidden" name="bikeId" th:value="${bike.id}">
+
+                <label for="renterName">Your Name</label>
+                <input type="text" id="renterName" name="renterName" required placeholder="Enter your full name">
+
+                <label for="renterPhone">Phone Number</label>
+                <input type="tel" id="renterPhone" name="renterPhone" required placeholder="Enter your phone number">
+
+                <button type="submit" class="rent-btn">Confirm Booking</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 RideShare. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
