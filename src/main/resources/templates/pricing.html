@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pricing — RideShare</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-content">
+            <h1 class="logo">🚲 RideShare</h1>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/pricing">Pricing</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="static-page">
+        <h2 class="section-title" style="text-align:left; padding:0 0 24px;">Pricing</h2>
+        <p style="margin-bottom:32px;">
+            Simple, hourly pricing — pay only for the time you ride. No deposits, no hidden charges.
+        </p>
+
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Bike</th>
+                    <th>Model</th>
+                    <th>Rate / Hour</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="bike : ${bikes}">
+                    <td th:text="${bike.name}">Name</td>
+                    <td th:text="${bike.model}">Model</td>
+                    <td th:text="${'₹' + bike.hourlyRate}">₹0.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="margin-top:24px; color:#9a9a9a; font-size:14px;">
+            Minimum billing is 1 hour. Any partial hour beyond that is rounded up.
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 RideShare. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
