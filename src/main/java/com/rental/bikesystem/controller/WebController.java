@@ -12,6 +12,8 @@ import com.rental.bikesystem.service.RentalService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.rental.bikesystem.entity.BikeCategory;
+
 
 import java.util.List;
 
@@ -21,12 +23,7 @@ public class WebController {
     @Autowired
     private BikeService bikeService;
 
-    @GetMapping("/")
-    public String home(Model model) {
-        List<Bike> bikes = bikeService.getAllBikes();
-        model.addAttribute("bikes", bikes);
-        return "index";
-    }
+   
     
     @Autowired
     private RentalService rentalService;
@@ -85,4 +82,20 @@ public class WebController {
         model.addAttribute("rental", rental);
         return "return-success";
     }
+    
+    @GetMapping("/")
+    public String home(@RequestParam(required = false) String category, Model model) {
+        List<Bike> bikes;
+        if (category != null && !category.isEmpty()) {
+            BikeCategory selectedCategory = BikeCategory.valueOf(category);
+            bikes = bikeService.getBikesByCategory(selectedCategory);
+            model.addAttribute("selectedCategory", category);
+        } else {
+            bikes = bikeService.getAllBikes();
+        }
+        model.addAttribute("bikes", bikes);
+        model.addAttribute("categories", BikeCategory.values());
+        return "index";
+    }
+    
 }

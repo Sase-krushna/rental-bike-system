@@ -11,37 +11,48 @@
         <div class="navbar-content">
             <h1 class="logo">🚲 RideShare</h1>
             <nav>
-    			<a href="/">Home</a>
-  		  		<a href="#bikes">Browse Bikes</a>
-    			<a href="#how-it-works">How It Works</a>
-    			<a href="/return">Return a Bike</a>
-			</nav>
+    <a href="/">Home</a>
+    <a href="#bikes">Browse Bikes</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="/return">Return a Bike</a>
+</nav>
         </div>
     </header>
-
-    <section class="hero">
-        <h2>Bicycle <span class="accent">Rentals</span></h2>
+    
+    
+<section class="hero">
+    <div class="hero-text">
+        <h2>Bicycle Rentals</h2>
+        <div class="hero-divider"></div>
         <p>Affordable, convenient bike rentals — book in seconds, ride in minutes.</p>
-    </section>
+        <div class="hero-buttons">
+            <a href="#bikes" class="hero-btn-primary">Browse Bikes</a>
+            <a href="#how-it-works" class="hero-btn-secondary">How It Works ▸</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img th:src="@{/images/sss.png}" alt="Bike">
+    </div>
+</section>
+    
 
-    <section class="category-strip">
-        <div class="category-item">
-            <div class="icon">🚲</div>
-            <span>Bikes</span>
-        </div>
-        <div class="category-item">
-            <div class="icon">🛵</div>
-            <span>Mopeds</span>
-        </div>
-        <div class="category-item">
-            <div class="icon">🛴</div>
-            <span>Scooters</span>
-        </div>
-        <div class="category-item">
-            <div class="icon">🚗</div>
-            <span>Cars</span>
-        </div>
-    </section>
+  
+
+   <section class="category-strip">
+    <a href="/" class="category-item" th:classappend="${selectedCategory == null} ? 'category-active'">
+        <div class="icon">🚗</div>
+        <span>All</span>
+    </a>
+    <a th:each="cat : ${categories}"
+       th:href="@{/(category=${cat})}"
+       class="category-item"
+       th:classappend="${selectedCategory == cat.name()} ? 'category-active'">
+        <div class="icon" th:text="${cat.name() == 'BIKE'} ? '🚲' : (${cat.name() == 'MOPED'} ? '🛵' : (${cat.name() == 'SCOOTER'} ? '🛴' : '🚗'))">🚲</div>
+        <span th:text="${cat.name()}">Category</span>
+    </a>
+</section>
 
     <h2 class="section-title" id="bikes">Available Bikes</h2>
     <section class="bike-grid">
@@ -100,7 +111,82 @@
         </div>
     </section>
 
-    <footer>
+<section class="static-page" id="about">
+    <h2 class="section-title" style="text-align:left; padding:0 0 24px;">About RideShare</h2>
+
+    <p>
+        RideShare started with a simple idea: getting around the city shouldn't require owning a vehicle.
+        We built a rental platform that makes it easy to grab a bike, ride where you need to go, and return
+        it without any hassle.
+    </p>
+
+    <p>
+        Our fleet is carefully maintained and inspected regularly, so every ride is safe and smooth.
+        Whether you're commuting to work, exploring the city, or just need a bike for an hour, we've got
+        you covered — with transparent, hourly pricing and no hidden fees.
+    </p>
+
+    <div class="about-stats">
+        <div class="stat-box">
+            <h3>500+</h3>
+            <p>Happy Riders</p>
+        </div>
+        <div class="stat-box">
+            <h3>50+</h3>
+            <p>Bikes in Fleet</p>
+        </div>
+        <div class="stat-box">
+            <h3>24/7</h3>
+            <p>Booking Available</p>
+        </div>
+    </div>
+</section>
+
+<section class="static-page" id="pricing">
+    <h2 class="section-title" style="text-align:left; padding:0 0 24px;">Pricing</h2>
+    <p style="margin-bottom:32px;">
+        Simple, hourly pricing — pay only for the time you ride. No deposits, no hidden charges.
+    </p>
+
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Bike</th>
+                <th>Model</th>
+                <th>Rate / Hour</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="bike : ${bikes}">
+                <td th:text="${bike.name}">Name</td>
+                <td th:text="${bike.model}">Model</td>
+                <td th:text="${'₹' + bike.hourlyRate}">₹0.00</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p style="margin-top:24px; color:#9a9a9a; font-size:14px;">
+        Minimum billing is 1 hour. Any partial hour beyond that is rounded up.
+    </p>
+</section>
+
+<section class="form-section" id="contact">
+    <div class="form-card">
+        <h2>Contact Us</h2>
+        <p style="color:#9a9a9a; font-size:14px; margin-bottom:20px;">
+            Have a question or feedback? Reach out — we'd love to hear from you.
+        </p>
+
+        <div class="contact-info">
+            <p><strong>Address:</strong> 123 Main Street, Nashik, Maharashtra</p>
+            <p><strong>Phone:</strong> +91 98765 43210</p>
+            <p><strong>Email:</strong> support@rideshare.example</p>
+            <p><strong>Hours:</strong> Mon–Sat: 9am–8pm, Sun: 10am–6pm</p>
+        </div>
+    </div>
+</section>
+
+ <footer>
     <p>&copy; 2026 RideShare. All rights reserved.</p>
     <p style="margin-top:8px;"><a href="/admin" style="color:#6b6b6b; font-size:12px;">Admin</a></p>
 </footer>
