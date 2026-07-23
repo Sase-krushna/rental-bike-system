@@ -190,22 +190,13 @@ a {
 }
 
 .bike-card {
-    background-color: #181818;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid #262626;
-    transition: transform 0.2s, border-color 0.2s;
+    background: transparent;
+    border: none;
+    transition: transform 0.2s;
 }
 
 .bike-card:hover {
     transform: translateY(-4px);
-    border-color: #ff8a3d;
-}
-
-.bike-image {
-    width: 100%;
-    height: 190px;
-    object-fit: cover;
 }
 
 .bike-info {
@@ -235,24 +226,11 @@ a {
     color: #ff8a3d;
 }
 
-.bike-status {
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 16px;
-    letter-spacing: 0.3px;
-}
-
-.status-available {
-    background-color: #163b26;
-    color: #4ade80;
-}
-
-.status-unavailable {
-    background-color: #3b1616;
-    color: #f87171;
+.bike-image {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 6px;
 }
 
 .rent-btn {
@@ -877,4 +855,48 @@ html {
 .parallax-wrapper .rental-terms {
     position: relative;
     z-index: 1;
+}
+
+.bike-desc {
+    color: #9a9a9a;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 10px 0 18px;
+}
+
+.bike-pricing {
+    list-style: none;
+    margin: 0 0 20px;
+    padding: 0;
+}
+
+.bike-pricing li {
+    padding: 4px 0;
+    font-size: 14px;
+    color: #cfcfcf;
+}
+
+.bike-pricing li span {
+    color: #ff8a3d;
+    font-weight: 700;
+}
+
+.book-btn {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 11px;
+    background: transparent;
+    color: #f1f1f1;
+    border: 1px solid #f1f1f1;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.book-btn:hover {
+    background-color: #ff8a3d;
+    border-color: #ff8a3d;
+    color: #0f0f0f;
 }

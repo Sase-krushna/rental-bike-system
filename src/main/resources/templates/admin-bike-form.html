@@ -42,6 +42,10 @@
 
                 <label for="imageUrl">Image URL</label>
                 <input type="text" id="imageUrl" th:field="*{imageUrl}" placeholder="https://...">
+                
+                <label for="description">Description</label>
+<textarea id="description" th:field="*{description}" rows="3" placeholder="Short description of this bike..."
+    style="width:100%; padding:12px; background-color:#1f1f1f; border:1px solid #333333; border-radius:6px; font-size:15px; color:#f1f1f1; font-family:inherit; resize:vertical;"></textarea>
 
                 <label for="available" style="display:flex; align-items:center; gap:8px; margin-top:20px;">
                     <input type="checkbox" id="available" th:field="*{available}" style="width:auto;">

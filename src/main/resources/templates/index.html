@@ -36,7 +36,6 @@
 </section>
 
   
-
    <section class="category-strip">
     <a href="/" class="category-item" th:classappend="${selectedCategory == null} ? 'category-active'">
         <div class="icon">🚗</div>
@@ -49,28 +48,31 @@
         <div class="icon" th:text="${cat.name() == 'BIKE'} ? '🚲' : (${cat.name() == 'MOPED'} ? '🛵' : (${cat.name() == 'SCOOTER'} ? '🛴' : '🚗'))">🚲</div>
         <span th:text="${cat.name()}">Category</span>
     </a>
-</section>
+  </section>
+    
+<h2 class="section-title" id="bikes">Most Popular Bikes</h2>
+<section class="bike-grid">
+    <div class="bike-card" th:each="bike : ${popularBikes}">
+        <img th:src="${bike.imageUrl}" alt="Bike image" class="bike-image" width="400" height="190" loading="lazy">
+        <div class="bike-info">
+            <h3 th:text="${bike.name}">Bike Name</h3>
+            <p class="bike-desc" th:if="${bike.description != null and !bike.description.isEmpty()}" th:text="${bike.description}">
+                Description goes here.
+            </p>
+            <p class="bike-desc" th:unless="${bike.description != null and !bike.description.isEmpty()}">
+                A great ride for getting around the city with comfort and style.
+            </p>
 
-    <h2 class="section-title" id="bikes">Available Bikes</h2>
-    <section class="bike-grid">
-        <div class="bike-card" th:each="bike : ${bikes}">
-            <img th:src="${bike.imageUrl}" alt="Bike image" class="bike-image">
-            <div class="bike-info">
-                <h3 th:text="${bike.name}">Bike Name</h3>
-                <p class="bike-model" th:text="${bike.model}">Model</p>
-                <p class="bike-rate">
-                    <span th:text="${'₹' + bike.hourlyRate}">₹0.00</span> / hour
-                </p>
-                <p class="bike-status"
-                   th:classappend="${bike.available} ? 'status-available' : 'status-unavailable'"
-                   th:text="${bike.available} ? 'Available' : 'Not Available'">
-                   Status
-                </p>
-                <a th:if="${bike.available}" th:href="@{/rent/{id}(id=${bike.id})}" class="rent-btn">Rent Now</a>
-                <button th:if="${!bike.available}" class="rent-btn" disabled>Not Available</button>
-            </div>
+            <ul class="bike-pricing">
+                <li>- 1 hour <span th:text="${'₹' + bike.hourlyRate}">₹0.00</span></li>
+                <li>- 3 hours <span th:text="${'₹' + #numbers.formatDecimal(bike.hourlyRate * 2.6, 0, 2)}">₹0.00</span></li>
+                <li>- Full day <span th:text="${'₹' + #numbers.formatDecimal(bike.hourlyRate * 6, 0, 2)}">₹0.00</span></li>
+            </ul>
+
+            <a th:href="@{/rent/{id}(id=${bike.id})}" class="book-btn">Book Now</a>
         </div>
-    </section>
+    </div>
+</section>
 
   <section class="how-it-works" id="how-it-works">
     <h2 class="section-title" style="margin-bottom: 40px;">How to Rent a Bike</h2>

@@ -94,6 +94,13 @@ public class WebController {
             bikes = bikeService.getAllBikes();
         }
         model.addAttribute("bikes", bikes);
+
+        List<Bike> popularBikes = bikeService.getAllBikes();
+        if (popularBikes.size() > 3) {
+            popularBikes = popularBikes.subList(0, 3);
+        }
+        model.addAttribute("popularBikes", popularBikes);
+
         model.addAttribute("categories", BikeCategory.values());
         return "index";
     }
