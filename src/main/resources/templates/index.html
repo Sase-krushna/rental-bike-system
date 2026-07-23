@@ -22,7 +22,8 @@
     </header>
     
     
-<section class="hero">
+<section class="hero" th:style="'background-image: url(' + @{/images/landing.jpg} + ')'">
+    <div class="hero-overlay"></div>
     <div class="hero-text">
         <h2>Bicycle Rentals</h2>
         <div class="hero-divider"></div>
@@ -32,11 +33,7 @@
             <a href="#how-it-works" class="hero-btn-secondary">How It Works ▸</a>
         </div>
     </div>
-    <div class="hero-image">
-        <img th:src="@{/images/sss.png}" alt="Bike">
-    </div>
 </section>
-    
 
   
 
@@ -75,113 +72,181 @@
         </div>
     </section>
 
-    <section class="how-it-works" id="how-it-works">
-        <h2 class="section-title" style="margin-bottom: 24px;">How to Rent a Bike</h2>
+  <section class="how-it-works" id="how-it-works">
+    <h2 class="section-title" style="margin-bottom: 40px;">How to Rent a Bike</h2>
 
-        <div class="step-row">
-            <div class="step-number">1</div>
-            <div>
-                <h4>Browse</h4>
-                <p>Explore our fleet and pick a bike that suits your ride.</p>
+    <div class="how-container">
+        <div class="how-steps">
+            <div class="step-row">
+                <div class="step-icon">🔍</div>
+                <div>
+                    <h4>Browse</h4>
+                    <p>Explore our fleet and pick a bike that suits your ride.</p>
+                </div>
+            </div>
+
+            <div class="step-row">
+                <div class="step-icon">📝</div>
+                <div>
+                    <h4>Book</h4>
+                    <p>Enter your name and phone number to reserve it instantly.</p>
+                </div>
+            </div>
+
+            <div class="step-row">
+                <div class="step-icon">🚲</div>
+                <div>
+                    <h4>Ride</h4>
+                    <p>Pick up your bike and enjoy the road — billed by the hour.</p>
+                </div>
+            </div>
+
+            <div class="step-row">
+                <div class="step-icon">🔄</div>
+                <div>
+                    <h4>Return</h4>
+                    <p>Drop it back when you're done. Total cost calculated automatically.</p>
+                </div>
             </div>
         </div>
 
-        <div class="step-row">
-            <div class="step-number">2</div>
-            <div>
-                <h4>Book</h4>
-                <p>Enter your name and phone number to reserve it instantly.</p>
-            </div>
-        </div>
-
-        <div class="step-row">
-            <div class="step-number">3</div>
-            <div>
-                <h4>Ride</h4>
-                <p>Pick up your bike and enjoy the road — billed by the hour.</p>
-            </div>
-        </div>
-
-        <div class="step-row">
-            <div class="step-number">4</div>
-            <div>
-                <h4>Return</h4>
-                <p>Drop it back when you're done. Total cost calculated automatically.</p>
-            </div>
-        </div>
-    </section>
-
-<section class="static-page" id="about">
-    <h2 class="section-title" style="text-align:left; padding:0 0 24px;">About RideShare</h2>
-
-    <p>
-        RideShare started with a simple idea: getting around the city shouldn't require owning a vehicle.
-        We built a rental platform that makes it easy to grab a bike, ride where you need to go, and return
-        it without any hassle.
-    </p>
-
-    <p>
-        Our fleet is carefully maintained and inspected regularly, so every ride is safe and smooth.
-        Whether you're commuting to work, exploring the city, or just need a bike for an hour, we've got
-        you covered — with transparent, hourly pricing and no hidden fees.
-    </p>
-
-    <div class="about-stats">
-        <div class="stat-box">
-            <h3>500+</h3>
-            <p>Happy Riders</p>
-        </div>
-        <div class="stat-box">
-            <h3>50+</h3>
-            <p>Bikes in Fleet</p>
-        </div>
-        <div class="stat-box">
-            <h3>24/7</h3>
-            <p>Booking Available</p>
+        <div class="how-image">
+            <img th:src="@{/images/re.jpg}" alt="Bike">
         </div>
     </div>
 </section>
 
-<section class="static-page" id="pricing">
-    <h2 class="section-title" style="text-align:left; padding:0 0 24px;">Pricing</h2>
-    <p style="margin-bottom:32px;">
-        Simple, hourly pricing — pay only for the time you ride. No deposits, no hidden charges.
-    </p>
+<div class="parallax-wrapper" th:style="'background-image: url(' + @{/images/bg.png} + ')'">
+    <div class="parallax-overlay"></div>
 
-    <table class="admin-table">
-        <thead>
-            <tr>
-                <th>Bike</th>
-                <th>Model</th>
-                <th>Rate / Hour</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="bike : ${bikes}">
-                <td th:text="${bike.name}">Name</td>
-                <td th:text="${bike.model}">Model</td>
-                <td th:text="${'₹' + bike.hourlyRate}">₹0.00</td>
-            </tr>
-        </tbody>
-    </table>
+    <section class="static-page" id="about">
+        <h2 class="section-title" style="text-align:left; padding:0 0 24px;">About RideShare</h2>
 
-    <p style="margin-top:24px; color:#9a9a9a; font-size:14px;">
-        Minimum billing is 1 hour. Any partial hour beyond that is rounded up.
-    </p>
-</section>
-
-<section class="form-section" id="contact">
-    <div class="form-card">
-        <h2>Contact Us</h2>
-        <p style="color:#9a9a9a; font-size:14px; margin-bottom:20px;">
-            Have a question or feedback? Reach out — we'd love to hear from you.
+        <p>
+            RideShare started with a simple idea: getting around the city shouldn't require owning a vehicle.
+            We built a rental platform that makes it easy to grab a bike, ride where you need to go, and return
+            it without any hassle.
         </p>
 
-        <div class="contact-info">
-            <p><strong>Address:</strong> 123 Main Street, Nashik, Maharashtra</p>
-            <p><strong>Phone:</strong> +91 98765 43210</p>
-            <p><strong>Email:</strong> support@rideshare.example</p>
-            <p><strong>Hours:</strong> Mon–Sat: 9am–8pm, Sun: 10am–6pm</p>
+        <p>
+            Our fleet is carefully maintained and inspected regularly, so every ride is safe and smooth.
+            Whether you're commuting to work, exploring the city, or just need a bike for an hour, we've got
+            you covered — with transparent, hourly pricing and no hidden fees.
+        </p>
+
+        <div class="about-stats">
+            <div class="stat-box">
+                <h3>500+</h3>
+                <p>Happy Riders</p>
+            </div>
+            <div class="stat-box">
+                <h3>50+</h3>
+                <p>Bikes in Fleet</p>
+            </div>
+            <div class="stat-box">
+                <h3>24/7</h3>
+                <p>Booking Available</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="static-page" id="pricing">
+        <h2 class="section-title" style="text-align:left; padding:0 0 24px;">Pricing</h2>
+        <p style="margin-bottom:32px;">
+            Simple, hourly pricing — pay only for the time you ride. No deposits, no hidden charges.
+        </p>
+
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Bike</th>
+                    <th>Model</th>
+                    <th>Rate / Hour</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="bike : ${bikes}">
+                    <td th:text="${bike.name}">Name</td>
+                    <td th:text="${bike.model}">Model</td>
+                    <td th:text="${'₹' + bike.hourlyRate}">₹0.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="margin-top:24px; color:#9a9a9a; font-size:14px;">
+            Minimum billing is 1 hour. Any partial hour beyond that is rounded up.
+        </p>
+    </section>
+
+    <section class="rental-terms">
+        <h2 class="section-title" style="margin-bottom: 40px;">Rental Terms</h2>
+
+        <div class="terms-grid">
+            <div class="term-item">
+                <h4>Security Deposit</h4>
+                <p>We ask a security deposit on all bikes or cycling gear you rent. You can make a payment via a debit or credit card. We cannot return your money until the gear is returned.</p>
+            </div>
+
+            <div class="term-item">
+                <h4>Age Restrictions</h4>
+                <p>If you want to rent a bike, you have to be at least <strong>18 years old</strong>. Don't forget to bring your driver's license. Younger participants need to be accompanied by a parent or guardian.</p>
+            </div>
+
+            <div class="term-item">
+                <h4>Helmets</h4>
+                <p>Additionally, we provide all our clients with mandatory helmets fitted right to your size. Be careful on the road!</p>
+            </div>
+
+            <div class="term-item">
+                <h4>Damage</h4>
+                <p>If you want to rent a bike or any cycling gear, you will be responsible for it until the time of return. Theft and any possible damage are included.</p>
+            </div>
+
+            <div class="term-item">
+                <h4>Riding Rules</h4>
+                <p>All renters have to stick to traffic rules, signs, laws, and regulations during the riding trip. It is advisable not to use smartphones while riding.</p>
+            </div>
+
+            <div class="term-item">
+                <h4>Returning Equipment</h4>
+                <p>Return your bike or gear at least 15 minutes prior to closing time to check it out. We usually work till 8pm on weekdays and 6pm on Sundays.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<section class="contact-section" id="contact" th:style="'background-image: url(' + @{/images/back.jpg} + ')'">
+    <div class="contact-overlay"></div>
+    <div class="contact-container">
+        <div class="contact-left">
+            <h2>Contacts</h2>
+            <p>If you have any questions or want to rent a bike, feel free to get in touch with us.</p>
+
+            <div class="contact-detail">
+                <span class="contact-label">Address</span>
+                <p>123 Main Street<br>Nashik, Maharashtra 422001</p>
+            </div>
+
+            <div class="contact-detail">
+                <span class="contact-label">Hours</span>
+                <p>Monday–Saturday: 9am–8pm<br>Sunday: 10am–6pm</p>
+            </div>
+
+            <div class="contact-detail">
+                <span class="contact-label">Contacts</span>
+                <p>+91 98765 43210<br>support@rideshare.example</p>
+            </div>
+        </div>
+
+        <div class="contact-right">
+            <form>
+                <input type="text" placeholder="Name*" required>
+                <input type="tel" placeholder="Phone number*" required>
+                <input type="email" placeholder="Email*" required>
+                <textarea placeholder="Type your message" rows="5"></textarea>
+                <button type="submit" class="rent-btn">Contact Us</button>
+            </form>
         </div>
     </div>
 </section>
