@@ -85,24 +85,25 @@ public class WebController {
     
     @GetMapping("/")
     public String home(@RequestParam(required = false) String category, Model model) {
-        List<Bike> bikes;
+        List<Bike> displayBikes;
+        String sectionTitle;
+
         if (category != null && !category.isEmpty()) {
             BikeCategory selectedCategory = BikeCategory.valueOf(category);
-            bikes = bikeService.getBikesByCategory(selectedCategory);
+            displayBikes = bikeService.getBikesByCategory(selectedCategory);
             model.addAttribute("selectedCategory", category);
+            sectionTitle = selectedCategory.name() + "s Available";
         } else {
-            bikes = bikeService.getAllBikes();
+            displayBikes = bikeService.getAllBikes();
+            if (displayBikes.size() > 3) {
+                displayBikes = displayBikes.subList(0, 3);
+            }
+            sectionTitle = "Most Popular Bikes";
         }
-        model.addAttribute("bikes", bikes);
 
-        List<Bike> popularBikes = bikeService.getAllBikes();
-        if (popularBikes.size() > 3) {
-            popularBikes = popularBikes.subList(0, 3);
-        }
-        model.addAttribute("popularBikes", popularBikes);
-
+        model.addAttribute("popularBikes", displayBikes);
+        model.addAttribute("sectionTitle", sectionTitle);
         model.addAttribute("categories", BikeCategory.values());
         return "index";
     }
-    
 }

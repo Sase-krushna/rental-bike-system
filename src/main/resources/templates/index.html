@@ -50,7 +50,7 @@
     </a>
   </section>
     
-<h2 class="section-title" id="bikes">Most Popular Bikes</h2>
+<h2 class="section-title" id="bikes" th:text="${sectionTitle}">Most Popular Bikes</h2>
 <section class="bike-grid">
     <div class="bike-card" th:each="bike : ${popularBikes}">
         <img th:src="${bike.imageUrl}" alt="Bike image" class="bike-image" width="400" height="190" loading="lazy">
